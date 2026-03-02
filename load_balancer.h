@@ -13,9 +13,11 @@ public:
     std::queue<request> request_queue;
     std::vector<webserver> servers;
     int resize_interval;
+    int addmore_interval;
 
-    load_balancer(int resize_interval_) : resize_interval(resize_interval_){}
+    load_balancer(int resize_interval_, int addmore_interval_) : resize_interval(resize_interval_), addmore_interval(addmore_interval_){}
 
+    bool ip_range_blocker(int ip){}
     void add_request(const request &req, int current_time, std::ofstream &log);
 
     void remove_request(int current_time, std::ofstream &log);
